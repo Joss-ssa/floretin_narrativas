@@ -1,20 +1,27 @@
-# Floretin_Narrativas
+# Mi experiencia AR
 
 Experiencia de realidad aumentada creada con Zence Inverse Reality.
 
 **Modo:** World Effects (anclaje al suelo con SLAM)
-**Hosting:** GitHub Pages
-**En vivo:** https://Joss-ssa.github.io/floretin_narrativas/
+**Hosting:** Vercel
+**En vivo:** la asigna Vercel al conectar el repositorio
 
 ---
 
 ## Cómo se publica
 
-Cada `push` a `main` dispara `.github/workflows/deploy.yml`, que compila el
-proyecto y lo publica en GitHub Pages. No hay que hacer nada más: **editar y guardar
-desde Zence Inverse Reality crea un commit, y el commit actualiza la experiencia.**
+En Vercel: **Add New → Project**, importa este repositorio y despliega. No hay nada
+que rellenar, porque `vercel.json` ya lo trae:
 
-Si es la primera vez, activa Pages en *Settings → Pages → Source: GitHub Actions*.
+| Ajuste | Valor | De dónde sale |
+| --- | --- | --- |
+| Framework Preset | Other | `vercel.json` |
+| Build Command | `npm run build` | `vercel.json` |
+| Output Directory | `dist` | `vercel.json` |
+| Node.js Version | la LTS más nueva | `engines` del `package.json` |
+
+Hecho eso, **cada `push` a `main` vuelve a desplegar**: editar y guardar desde Zence Inverse Reality
+crea un commit, y el commit actualiza la experiencia.
 
 ## Cómo editarlo
 
@@ -45,16 +52,15 @@ dos requisitos:
 ## Estructura
 
 ```
-src/.expanse.json       la escena: objetos, materiales, luces, componentes
-src/index.html          página de entrada; carga el motor
-src/*.ts                componentes propios
-src/inre-marcadores.ts  carga los marcadores en el motor; lo genera Zence Inverse Reality
-src/assets/             modelos, texturas, vídeo, audio
-image-targets/          marcadores de imagen
-config/                 configuración de webpack (MIT, de 8th Wall)
-vercel.json             despliegue en Vercel
-wrangler.toml           despliegue en Cloudflare Pages
-.node-version           versión de Node con la que se compila
+src/.expanse.json  la escena: objetos, materiales, luces, componentes
+src/index.html     página de entrada; carga el motor
+src/*.ts           componentes propios
+src/assets/        modelos, texturas, vídeo, audio
+image-targets/     marcadores de imagen
+config/            configuración de webpack (MIT, de 8th Wall)
+vercel.json        despliegue en Vercel
+wrangler.toml      despliegue en Cloudflare Pages
+.node-version      versión de Node con la que se compila
 ```
 
 ## Licencias
